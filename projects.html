@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Projects | Sidik Waluya</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="glass">
+        <a href="index.html" class="logo">Sidik.Dev</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#projects">Featured</a></li>
+        </ul>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </nav>
+
+    <header class="header-section">
+        <div class="container">
+            <h1 class="font-xxl mb-1">All Projects</h1>
+            <p class="text-muted font-lg">A showcase of my latest work and experiments.</p>
+        </div>
+    </header>
+
+    <section class="container">
+        <div id="projects-grid" class="projects-grid">
+            <!-- Loaded via JS -->
+        </div>
+    </section>
+
+    <footer class="p-2 text-center mt-4 border-t">
+        <p>&copy; 2026 Sidik Waluya. Built with Google Sheets CMS</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        const CONFIG = { API_URL: "https://script.google.com/macros/s/AKfycbzQp8WPoF1PjQHGIFZ5SHJ19OKdJNKMXyarGHPWk9xN3BHv3OOrIaWSYISeT_KaK-TK/exec" };
+        const grid = document.getElementById('projects-grid');
+
+        async function loadProjects() {
+            let projects = [];
+            if (!CONFIG.API_URL) {
+                projects = [
+                    { id: 1, title: "E-Commerce Glass UI", description: "A high-performance e-commerce platform.", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800", tech: "HTML, CSS, JS", link: "#", category: "Web Development" },
+                    { id: 2, title: "Crypto Tracker App", description: "Real-time cryptocurrency monitoring.", image: "https://images.unsplash.com/photo-1621761191319-c6fb62004040?q=80&w=800", tech: "Mobile, React", link: "#", category: "Mobile App" },
+                    { id: 3, title: "Fintech Dashboard", description: "Clean financial management dashboard.", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800", tech: "Vue.js, Tailwind", link: "#", category: "Web Development" }
+                ];
+            } else {
+                const res = await fetch(`${CONFIG.API_URL}?route=projects`);
+                projects = await res.json();
+            }
+
+            grid.innerHTML = projects.map(p => `
+                <div class="glass overflow-hidden flex flex-column" data-aos="fade-up">
+                    <img src="${p.image}" alt="${p.title}" class="w-full h-200 object-cover">
+                    <div class="card-content">
+                        <span class="text-secondary font-sm font-bold">${p.category}</span>
+                        <h3 class="mt-1 mb-1">${p.title}</h3>
+                        <p class="text-muted font-sm mb-2 flex-grow">${p.description}</p>
+                        <div class="flex gap-1 flex-wrap mb-2">
+                            ${p.tech.split(',').map(t => `<span class="glass px-2 py-1 font-sm">${t.trim()}</span>`).join('')}
+                        </div>
+                        <a href="${p.link}" class="btn btn-primary w-full" target="_blank">View Live Demo</a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            AOS.init();
+            loadProjects();
+            // Basic theme toggle
+            const themeBtn = document.getElementById('theme-toggle');
+            let theme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+            themeBtn.addEventListener('click', () => {
+                theme = theme === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+                themeBtn.querySelector('i').className = theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+            });
+        });
+    </script>
+</body>
+</html>

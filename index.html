@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidik Waluya | Developer Portfolio</title>
+    
+    <!-- Meta Tags -->
+    <meta name="description" content="Portfolio of Sidik Waluya, a professional UI/UX Designer and Web Developer.">
+    <link rel="icon" href="assets/images/favicon.png" type="image/x-icon">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Libraries -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="glass">
+        <a href="#" class="logo">Sidik.Dev</a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="flex gap-1 items-center">
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+                <i class="fas fa-moon"></i>
+            </button>
+            <a href="admin/admin.html" class="btn btn-secondary btn-sm">Admin</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-container">
+            <div class="hero-content" data-aos="fade-right">
+                <span class="hero-badge">Available for Freelance</span>
+                <h1 id="hero-name" class="hero-h1">Sidik Waluya</h1>
+                <h2 id="hero-title" class="hero-h2">UI/UX Designer & Web Developer</h2>
+                <p id="hero-tagline" class="hero-p">
+                    Crafting premium digital experiences through minimalist design and robust code.
+                </p>
+                <div class="hero-btns flex gap-1">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                </div>
+            </div>
+            <div class="hero-image" data-aos="fade-left">
+                <div class="relative">
+                    <img id="profile-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop" alt="Sidik Waluya" class="profile-img">
+                    <div class="glass floating-badge">
+                        <i class="fas fa-code-branch icon-lg"></i>
+                        <div>
+                            <h4 class="m-0">50+ Projects</h4>
+                            <p class="m-0 text-muted font-sm">Completed Successfully</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="container">
+        <div class="section-head" data-aos="fade-up">
+            <h2>About Me</h2>
+        </div>
+        <div class="glass p-3 mt-2" data-aos="fade-up">
+            <p id="bio-content" class="hero-p m-auto text-center max-w-900">
+                Loading biography...
+            </p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="container">
+        <div class="section-head" data-aos="fade-up">
+            <h2>My Skills</h2>
+        </div>
+        <div id="skills-grid" class="skills-grid">
+            <!-- Skills will be loaded here -->
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="container">
+        <div class="section-head" data-aos="fade-up">
+            <h2>Featured Projects</h2>
+            <div id="filter-btns" class="filter-group">
+                <button class="btn btn-secondary active" data-filter="all">All</button>
+                <button class="btn btn-secondary" data-filter="UI/UX Design">UI/UX Design</button>
+                <button class="btn btn-secondary" data-filter="Web Development">Web Development</button>
+                <button class="btn btn-secondary" data-filter="Mobile App">Mobile App</button>
+            </div>
+        </div>
+        <div id="projects-grid" class="projects-grid">
+            <!-- Projects will be loaded here -->
+        </div>
+        <div class="text-center mt-4">
+            <a href="projects.html" class="btn btn-secondary">Browse All Projects</a>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="container">
+        <div class="section-head" data-aos="fade-up">
+            <h2>Experience</h2>
+        </div>
+        <div id="timeline" class="timeline">
+            <!-- Timeline will be loaded here -->
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="container">
+        <div class="section-head" data-aos="fade-up">
+            <h2>Latest Insights</h2>
+        </div>
+        <div id="blog-grid" class="blog-grid">
+            <!-- Blogs will be loaded here -->
+        </div>
+        <div class="text-center mt-4">
+            <a href="blog.html" class="btn btn-secondary">Visit Blog</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container">
+        <div class="section-head" data-aos="fade-up">
+            <h2>Get In Touch</h2>
+        </div>
+        <div class="glass p-3 m-auto text-center max-w-600" data-aos="fade-up">
+            <h3 class="mb-2">Let's discuss your next project</h3>
+            <div class="social-links">
+                <a href="#" id="contact-email" target="_blank" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <a href="#" id="contact-github" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" id="contact-linkedin" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" id="contact-whatsapp" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <a href="mailto:example@gmail.com" class="btn btn-primary btn-lg">Hire Me Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center p-2 mt-4 text-muted border-t">
+        <p>&copy; 2026 Sidik Waluya. Built with <i class="fas fa-heart text-danger"></i> using Google Sheets CMS</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+    </script>
+</body>
+</html>

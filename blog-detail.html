@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Details | Sidik Waluya</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="glass">
+        <a href="index.html" class="logo">Sidik.Dev</a>
+        <div class="flex gap-1 items-center">
+            <a href="blog.html" class="btn btn-secondary btn-sm">Back to Blog</a>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button>
+        </div>
+    </nav>
+
+    <article class="container max-w-800 pt-10">
+        <div id="post-content">
+            <p>Loading post...</p>
+        </div>
+    </article>
+
+    <script>
+        const CONFIG = { API_URL: "https://script.google.com/macros/s/AKfycbzQp8WPoF1PjQHGIFZ5SHJ19OKdJNKMXyarGHPWk9xN3BHv3OOrIaWSYISeT_KaK-TK/exec" };
+        const urlParams = new URLSearchParams(window.location.search);
+        const postId = urlParams.get('id');
+
+        async function loadPost() {
+            if (!postId) {
+                document.getElementById('post-content').innerHTML = "<h1>Post not found</h1>";
+                return;
+            }
+
+            let post = null;
+            if (!CONFIG.API_URL) {
+                post = { title: "The Future of Web Design", image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200", date: "Mar 10, 2026", category: "Design", content: "Web design is evolving rapidly with AI and immersive technologies. Glassmorphism and dark mode are just the beginning of a more tactile and personalized web experience.", author: "Sidik Waluya" };
+            } else {
+                const res = await fetch(`${CONFIG.API_URL}?route=blog&id=${postId}`);
+                post = await res.json();
+            }
+
+            document.getElementById('post-content').innerHTML = `
+                <img src="${post.image}" class="w-full h-400 object-cover rounded-2xl mb-3">
+                <span class="text-primary font-bold">${post.category}</span>
+                <h1 class="font-xxl m-1">${post.title}</h1>
+                <div class="flex gap-1 text-muted mb-3">
+                    <span>By ${post.author || 'Sidik Waluya'}</span> • <span>${post.date}</span>
+                </div>
+                <div class="font-lg text-muted">
+                    ${post.content.replace(/\n/g, '<br>')}
+                </div>
+            `;
+        }
+
+        window.onload = loadPost;
+    </script>
+</body>
+</html>
