@@ -14,7 +14,7 @@ let currentRoute = '';
 
 // Check if already logged in
 if (adminPassword) {
-    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('login-screen').classList.add('hidden');
     loadDashboardData();
 }
 
@@ -52,7 +52,7 @@ async function adminLogin() {
 function successLogin(pass) {
     adminPassword = pass;
     localStorage.setItem('adminPass', pass);
-    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('login-screen').classList.add('hidden');
     loadDashboardData();
 }
 
@@ -62,10 +62,10 @@ function logout() {
 }
 
 function switchTab(tab) {
-    document.querySelectorAll('.tab-content').forEach(t => t.style.display = 'none');
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.add('hidden'));
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
     
-    document.getElementById(`${tab}-tab`).style.display = 'block';
+    document.getElementById(`${tab}-tab`).classList.remove('hidden');
     event.currentTarget.classList.add('active');
     currentTab = tab;
 }
@@ -142,11 +142,11 @@ function openModal(type, item = null) {
     });
 
     formFields.innerHTML = html;
-    modal.style.display = 'flex';
+    modal.classList.remove('hidden');
 }
 
 function closeModal() {
-    modal.style.display = 'none';
+    modal.classList.add('hidden');
 }
 
 form.onsubmit = async (e) => {
