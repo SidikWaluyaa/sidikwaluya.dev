@@ -81,7 +81,7 @@ img {
 }
 
 /* Navigation */
-nav {
+.navbar {
     position: fixed;
     top: 1.5rem;
     left: 50%;
