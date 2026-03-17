@@ -49,9 +49,13 @@ function doPost(e) {
     return response({ success: false, message: "Unauthorized" });
   }
 
+  if (action === "LOGIN") {
+    return response({ success: true, message: "Login successful" });
+  }
+
   const sheet = ss.getSheetByName(route);
   if (!sheet) {
-    return response({ success: false, message: "Sheet not found" });
+    return response({ success: false, message: "Sheet not found: " + route });
   }
 
   try {
@@ -62,8 +66,6 @@ function doPost(e) {
         return updateRecord(sheet, id, data);
       case "DELETE":
         return deleteRecord(sheet, id);
-      case "LOGIN":
-        return response({ success: true, message: "Login successful" });
       default:
         return response({ success: false, message: "Invalid action" });
     }

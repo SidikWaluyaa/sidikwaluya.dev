@@ -42,7 +42,7 @@ async function adminLogin() {
         if (result.success) {
             successLogin(pass);
         } else {
-            msg.innerText = "Unauthorized Access";
+            msg.innerText = result.message || "Unauthorized Access";
         }
     } catch (e) {
         msg.innerText = "Connection Error";
