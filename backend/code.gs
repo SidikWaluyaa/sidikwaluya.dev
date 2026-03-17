@@ -10,7 +10,7 @@
  * 6. Set "Execute as: Me" and "Who has access: Anyone".
  */
 
-const ADMIN_PASSWORD = "sidik2003"; // Change this!
+const ADMIN_PASSWORD = "sidik2003";
 
 function doGet(e) {
   const route = e.parameter.route;

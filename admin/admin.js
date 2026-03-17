@@ -24,10 +24,10 @@ async function adminLogin() {
 
     if (!CONFIG.API_URL) {
         // Mock login for development
-        if (pass === "admin123") {
+        if (pass === "sidik2003") {
             successLogin(pass);
         } else {
-            msg.innerText = "Invalid password (Mock: admin123)";
+            msg.innerText = "Invalid password (Mock: sidik2003)";
         }
         return;
     }
@@ -198,5 +198,4 @@ function editItem(route, id) {
     let type = route === 'projects' ? 'project' : (route === 'skills' ? 'skill' : route);
     openModal(type, item);
 }
-坐
-坐
+
